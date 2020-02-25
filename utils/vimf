@@ -1,0 +1,10 @@
+#!/bin/sh
+
+rel=$(pwd)
+rel+="/"
+rel+=$(fzf)
+parent=${rel%/*}
+parent+="/"
+
+cd $parent
+vim $rel

@@ -1,0 +1,2 @@
+#!/bin/bash
+df | grep /dev/sda3 | awk '{print $3 / $4 * 100}'

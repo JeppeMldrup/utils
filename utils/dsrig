@@ -1,0 +1,4 @@
+#!/bin/sh
+setxkbmap us
+/home/jeppe/github/utils/bspwm/bspcsettings.sh
+xrandr --output DP-2 --scale 2x2

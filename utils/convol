@@ -1,0 +1,29 @@
+#!/bin/sh
+
+FILE=$1
+OUTPUT=$2
+
+case $FILE in
+    *.tex)
+        pdflatex $FILE -o ${FILE%.*}.pdf
+        ;;
+    *.md)
+        if [ "$OUTPUT" == "pdf" ]
+        then
+            pandoc --toc -s -c ~/.templates/notes.css $FILE -o ${FILE%.*}.pdf
+        else
+            pandoc --toc -s -c ~/.templates/notes.css $FILE -o ${FILE%.*}.html
+        fi
+        ;;
+    *.gv)
+        if [ "$OUTPUT" == "pdf" ]
+        then
+            dot -Tpdf $FILE -o ${FILE%.*}.pdf
+        elif [ "$OUTPUT" == "svg" ]
+        then
+            dot -Tsvg $FILE -o ${FILE%.*}.svg
+        else
+            dot -Tpng $FILE -o ${FILE%.*}.png
+        fi
+        ;;
+esac

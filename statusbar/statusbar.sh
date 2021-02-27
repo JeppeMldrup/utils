@@ -10,12 +10,12 @@ Vol(){
 }
 
 Bat(){
-        batstatus=$(cat "/sys/class/power_supply/BAT1/status" | tr -d '\n')
+        batstatus=$(cat "/sys/class/power_supply/BAT0/status" | tr -d '\n')
         if [ "$batstatus" = "Charging" ]
         then
                 echo -n "^fg(green) $batstatus ^fg()"
         fi
-        bat=$(cat /sys/class/power_supply/BAT1/capacity)
+        bat=$(cat /sys/class/power_supply/BAT0/capacity)
         case $bat in
                 [0-9])
                         echo -n "^fg(red)[*         ]^fg()"
@@ -68,28 +68,30 @@ get_status() {
         while true; do
                 Vol
                 Bat
-                Wifi
-                date +" %a %d. %b %l:%M %Z %Y " | sed 's/Wed/Lunsdag/'
+                #Wifi
+                date +" %a %d. %b %l:%M %Z %Y "
                 sleep 1m
         done
 }
 
 get_desktops(){
         while :; do
-                /home/jeppe/scripts/desktops.sh
+                /home/jeppe/github/utils/statusbar/desktops.sh
                 sleep 1m
         done
 }
 
-width=866
-offset=500
+width=2000
+offset=1840
 
-fgcolor="#aaaaaa"
-bgcolor="#111111"
-font="Monospace"
+bgcol=$(xrdb -query | grep background | grep -o "#[a-f0-9]*")
+fgcol=$(xrdb -query | grep foreground | grep -o "#[a-f0-9]*")
+green=$(xrdb -query | grep color2 | grep -o "#[a-f0-9]*")
+red=$(xrdb -query | grep color1 | grep -o "#[a-f0-9]*")
+font="Monospace:size=25"
 
-parameters="-h 24 -fn $font"
-parameters+=" -bg $bgcolor -fg $fgcolor -p"
+parameters="-h 56 -fn $font"
+parameters+=" -bg $bgcol -fg $fgcol -p"
 parameters+=" -title-name dzentop"
 
 get_status | dzen2 -ta r -tw $width -x $offset $parameters &

@@ -7,4 +7,4 @@ parent=${rel%/*}
 parent+="/"
 
 cd $parent
-vim $rel
+nvim $rel

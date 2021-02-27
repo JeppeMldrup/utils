@@ -58,7 +58,7 @@ endfunction
 
 """General mappings
 
-inoremap <leader>n <esc>/<++><cr>c$
+inoremap <leader>n <esc>/<++><cr>c4l
 inoremap <leader>w <esc>:w!<cr>i
 
 inoremap {<CR> {<CR>}<ESC>O
@@ -70,6 +70,16 @@ nnoremap <C-n> :Lex<CR>
 
 """MarkDown
 autocmd FileType md nnoremap ,w \| ! pandoc expand("%:t") -o expand("%:t:r").html
+
+"""Csharp
+autocmd FileType cs inoremap cw<TAB> Console.WriteLine();<ESC>hi
+autocmd FileType cs inoremap for<TAB> for (int i = 0; i < ; i++)<CR>{<CR>}<ESC>kkf<la
+autocmd FileType cs inoremap forr<TAB> for (int i = ; i >= 0; i++)<CR>{<CR>}<ESC>kkf=la
+autocmd FileType cs inoremap prop<TAB> public { get; set; }<ESC>0wwi
+autocmd FileType cs inoremap <leader>reg #region <CR>#endregion<ESC>kA
+
+autocmd FileType cs set foldmethod=marker
+autocmd FileType cs set foldmarker=#region,#endregion
 
 nmap ,man "*yiw:!st -e man $(xclip -o) &<CR>
 nmap ,hman "*yiw:!st -e man -Hsurf $(xclip -o) &<CR>

@@ -1,7 +1,5 @@
 super+w
 	$BROWSER &
-super+s
-	st ffm
 super+right_arrow
 	amixer -c 1 sset Master 2db+; /home/jeppe/github/utils/statusbar/resetbar.sh
 super+left_arrow
@@ -33,6 +31,8 @@ super+i
     /home/jeppe/github/utils/utils/password.sh
 super+m
     /home/jeppe/github/utils/utils/dsrig
+super+{s,r}
+    setxkbmap {dk,us}
 
 super+{f,t}
     bspc node focused -t {fullscreen,tiled}

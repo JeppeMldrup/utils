@@ -88,7 +88,7 @@ bgcol=$(xrdb -query | grep background | grep -o "#[a-f0-9]*")
 fgcol=$(xrdb -query | grep foreground | grep -o "#[a-f0-9]*")
 green=$(xrdb -query | grep color2 | grep -o "#[a-f0-9]*")
 red=$(xrdb -query | grep color1 | grep -o "#[a-f0-9]*")
-font="Monospace:size=25"
+font="xft:FiraCode-Retina:size=15"
 
 parameters="-h 56 -fn $font"
 parameters+=" -bg $bgcol -fg $fgcol -p"

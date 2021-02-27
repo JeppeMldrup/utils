@@ -14,7 +14,7 @@ XF86MonBrightnessDown
 super+shift+Return
     $TERMINAL &
 super+p
-    dmenu_run -fn "Monospace:size=29" -nb $(xrdb -query | grep background | grep -o "#[a-f0-9]*") -nf $(xrdb -query | grep foreground | grep -o "#[a-f0-9]*") -sb $(xrdb -query | grep color6 | grep -o "#[a-f0-9]*") -sf $(xrdb -query | grep background | grep -o "#[a-f0-9]*")
+    dmenu_run -fn "xft:FiraCode-Retina:size=20" -nb $(xrdb -query | grep background | grep -o "#[a-f0-9]*") -nf $(xrdb -query | grep foreground | grep -o "#[a-f0-9]*") -sb $(xrdb -query | grep color6 | grep -o "#[a-f0-9]*") -sf $(xrdb -query | grep background | grep -o "#[a-f0-9]*")
 
 super+{h,j,k,l}
     bspc node {west,south,north,east} -f; /home/jeppe/github/utils/statusbar/resetbar.sh
